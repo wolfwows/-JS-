@@ -7,31 +7,45 @@
     <script src="./calendar.js" charset="utf-8"></script>
   </head>
   <body>
-    <div id="showDate">
-      <div class="dateArea">
-        <span id="calendarYear">2018</span>年<span id="calendarMonth">8</span>月
-      </div>
+    <div class="signTop">
+      <button type="button" name="button" class="signIn">点我签到</button>
     </div>
-    <div class="calendarArea">
-      <table>
-        <!-- 日历表格的星期显示 -->
-        <thead>
-          <tr>
-            <td>日</td>
-						<td>一</td>
-						<td>二</td>
-						<td>三</td>
-						<td>四</td>
-						<td>五</td>
-						<td>六</td>
-          </tr>
-        </thead>
-        <tbody id="drawCalendar"></tbody>
-      </table>
+    <div class="calendarContent">
+      <div id="showDate">
+        <div class="dateArea">
+          <span id="calendarYear">2018</span>年<span id="calendarMonth">8</span>月
+        </div>
+      </div>
+      <div class="calendarArea">
+        <table>
+          <!-- 日历表格的星期显示 -->
+          <thead>
+            <tr>
+              <td>日</td>
+  						<td>一</td>
+  						<td>二</td>
+  						<td>三</td>
+  						<td>四</td>
+  						<td>五</td>
+  						<td>六</td>
+            </tr>
+          </thead>
+          <tbody id="drawCalendar"></tbody>
+        </table>
+      </div>
     </div>
     <script src="./calendar.js" charset="utf-8"></script>
     <script type="text/javascript">
-      var caledar =new Calendar("drawCalendar",{});
+      var isSign = false;
+      var signRecode = [1534575827];
+      var calendar = new Calendar("drawCalendar",{
+        signDay: signRecode
+      });
+      document.getElementsByClassName("signIn")[0].onclick = function(){
+        if(isSign == false){
+          calendar.signIn();
+        }
+      }
     </script>
   </body>
 </html>
